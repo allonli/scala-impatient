@@ -8,7 +8,7 @@ import scala.collection.mutable.ArrayBuffer
  * Created by liyonghui on 2015/10/23.
  */
 /**
- * 18.1 µ¥ÀıÀàĞÍ
+ * 18.1 å•ä¾‹ç±»å‹
  */
 object Test18 {
 
@@ -18,24 +18,24 @@ object Test18 {
     book.setTitle("sdfsdf")
   }
 
-  //18.2 ÀàĞÍÍ¶Ó°
+  //18.2 ç±»å‹æŠ•å½±
   val qq = new Network
-  //qq.MemberºÍchatter.Memer²»ÊÇÍ¬Ò»¸öÀà
+  //qq.Memberå’Œchatter.Memerä¸æ˜¯åŒä¸€ä¸ªç±»
   val chatter = new Network
 
   val fred = qq.join("Fred")
-  //ÕâÀïfredÊÇÒ»¸öMember¶ÔÏó
-  val barney = chatter.join("Barney") //ÕâÀïfredÊÇÒ»¸öMember¶ÔÏó,µ«ÊÇÕâÀïµÄmeberºÍÉÏÃæµÄ²»ÊÇÍ¬Ò»¸öÀàÁË
-  //fred.contacts += barneyÕâÀïÕâÃ´»á±¨´í£¬ÒòÎªbarneyºÍfred²»ÊÇÍ¬Ò»¸öMemberÀàµÄ¶ÔÏó
-  //Òª½â¾öÉÏÊöÎÊÌâ£¬ĞèÒªÊ¹ÓÃÀàĞÍÍ¶Ó°¡£ÔÚ·ºĞÍNetwork#Member±íÊ¾ÎªÈÎºÎNetworkµÄMember¾Í²»»á±¨´íÁË
+  //è¿™é‡Œfredæ˜¯ä¸€ä¸ªMemberå¯¹è±¡
+  val barney = chatter.join("Barney") //è¿™é‡Œfredæ˜¯ä¸€ä¸ªMemberå¯¹è±¡,ä½†æ˜¯è¿™é‡Œçš„meberå’Œä¸Šé¢çš„ä¸æ˜¯åŒä¸€ä¸ªç±»äº†
+  //fred.contacts += barneyè¿™é‡Œè¿™ä¹ˆä¼šæŠ¥é”™ï¼Œå› ä¸ºbarneyå’Œfredä¸æ˜¯åŒä¸€ä¸ªMemberç±»çš„å¯¹è±¡
+  //è¦è§£å†³ä¸Šè¿°é—®é¢˜ï¼Œéœ€è¦ä½¿ç”¨ç±»å‹æŠ•å½±ã€‚åœ¨æ³›å‹Network#Memberè¡¨ç¤ºä¸ºä»»ä½•Networkçš„Memberå°±ä¸ä¼šæŠ¥é”™äº†
   fred.contacts += barney
 
-  //18.4 ÀàĞÍ±ğÃû
+  //18.4 ç±»å‹åˆ«å
   type Index = mutable.HashMap[String, (Int, Int)]
   val idex = new Index
   idex += ("1" ->(1, 1))
 
-  //18.5 ½á¹¹ÀàĞÍ(Ñ¼×ÓÀàĞÍ)
+  //18.5 ç»“æ„ç±»å‹(é¸­å­ç±»å‹)
   val tar = new Target
   val ls = new ArrayBuffer[String]()
   ls +=("1vvvvv", "212312", "31asfdasf")
@@ -47,16 +47,16 @@ object Test18 {
     }
   }
 
-  //18.6 ¸´ºÏÀàĞÍ
+  //18.6 å¤åˆç±»å‹
   val image = new ArrayBuffer[java.awt.Shape with java.io.Serializable]
   val rect = new Rectangle(5, 10, 20, 30)
   val rect2 = new Tmp
   image += rect // ok
 
-  //image += new Area(rect) ÕâÀï»á±¨´í£¬ÒòÎªAreaÖ»ÊÇÒ»¸öShapeµ«²»ÊÇSerializableµÄ
-  //ÒÔÉÏ´úÂë½øÒ»²½ËµÃ÷ÁËextends A with B with CÖĞÊÇÒ»¸öB with CÕûÌå
+  //image += new Area(rect) è¿™é‡Œä¼šæŠ¥é”™ï¼Œå› ä¸ºAreaåªæ˜¯ä¸€ä¸ªShapeä½†ä¸æ˜¯Serializableçš„
+  //ä»¥ä¸Šä»£ç è¿›ä¸€æ­¥è¯´æ˜äº†extends A with B with Cä¸­æ˜¯ä¸€ä¸ªB with Cæ•´ä½“
   val image2 = new ArrayBuffer[java.awt.Shape with java.io.Serializable {def contains(str: String): Boolean}]
-  image2 += rect2 //ÔÚ¸´ºÏÀàĞÍÖĞÓ¦ÓÃÑ¼×ÓÀàĞÍ
+  image2 += rect2 //åœ¨å¤åˆç±»å‹ä¸­åº”ç”¨é¸­å­ç±»å‹
   for (img<-image2){
     img.contains("xxxx")
   }
@@ -83,7 +83,7 @@ class Book extends Test18_1 {
 
 
 /**
- * 18.2 ÀàĞÍÍ¶Ó°
+ * 18.2 ç±»å‹æŠ•å½±
  */
 class Network {
 
