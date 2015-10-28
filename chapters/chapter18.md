@@ -6,16 +6,16 @@
 	}
 
 ### 18.2 类型投影
-  val qq = new Network
-  //qq.Member和chatter.Memer不是同一个类
-  val chatter = new Network
+	val qq = new Network
+//qq.Member和chatter.Memer不是同一个类
+	val chatter = new Network
 
-  val fred = qq.join("Fred")
-  //这里fred是一个Member对象
-  val barney = chatter.join("Barney") //这里fred是一个Member对象,但是这里的meber和上面的不是同一个类了
-  //fred.contacts += barney这里这么会报错，因为barney和fred不是同一个Member类的对象
-  //要解决上述问题，需要使用类型投影。在泛型Network#Member表示为任何Network的Member就不会报错了
-  fred.contacts += barney
+	val fred = qq.join("Fred")
+//这里fred是一个Member对象
+	val barney = chatter.join("Barney") //这里fred是一个Member对象,但是这里的meber和上面的不是同一个类了
+//fred.contacts += barney这里这么会报错，因为barney和fred不是同一个Member类的对象
+//要解决上述问题，需要使用类型投影。在泛型Network#Member表示为任何Network的Member就不会报错了
+	fred.contacts += barney
 
 ### 18.4 类型别名
   type Index = mutable.HashMap[String, (Int, Int)]
