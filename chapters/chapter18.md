@@ -1,9 +1,9 @@
 ### 18.1 单例类型
-  def main(args: Array[String]) {
-    val t = new Test18_1
-    val book = new Book
-    book.setTitle("sdfsdf")
-  }
+	def main(args: Array[String]) {
+	  val t = new Test18_1
+	  val book = new Book
+	  book.setTitle("sdfsdf")
+	}
 
 ### 18.2 类型投影
   val qq = new Network
