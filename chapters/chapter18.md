@@ -1,11 +1,11 @@
-  ### 18.1 单例类型
+### 18.1 单例类型
   def main(args: Array[String]) {
     val t = new Test18_1
     val book = new Book
     book.setTitle("sdfsdf")
   }
 
-  ### 18.2 类型投影
+### 18.2 类型投影
   val qq = new Network
   //qq.Member和chatter.Memer不是同一个类
   val chatter = new Network
@@ -17,12 +17,12 @@
   //要解决上述问题，需要使用类型投影。在泛型Network#Member表示为任何Network的Member就不会报错了
   fred.contacts += barney
 
-  ### 18.4 类型别名
+### 18.4 类型别名
   type Index = mutable.HashMap[String, (Int, Int)]
   val idex = new Index
   idex += ("1" ->(1, 1))
 
-  ### 18.5 结构类型(鸭子类型)
+### 18.5 结构类型(鸭子类型)
   val tar = new Target
   val ls = new ArrayBuffer[String]()
   ls +=("1vvvvv", "212312", "31asfdasf")
@@ -34,7 +34,7 @@
     }
   }
 
-  ### 18.6 复合类型
+### 18.6 复合类型
   val image = new ArrayBuffer[java.awt.Shape with java.io.Serializable]
   val rect = new Rectangle(5, 10, 20, 30)
   val rect2 = new Tmp
