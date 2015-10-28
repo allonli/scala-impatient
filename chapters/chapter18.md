@@ -30,8 +30,7 @@
 	
 	def appendLines(target: {def append(str: String): Any}, lines: Iterator[String]): Unit = {
 	for (l <- lines) {
-	target.append(l); target.append("\n")
-	}
+		target.append(l); target.append("\n")
 	}
 
 ### 18.6 复合类型
@@ -42,12 +41,41 @@
 
   //image += new Area(rect) 这里会报错，因为Area只是一个Shape但不是Serializable的
   //以上代码进一步说明了extends A with B with C中是一个B with C整体
+  
 	val image2 = new ArrayBuffer[java.awt.Shape with java.io.Serializable {def contains(str: String): Boolean}]
-	image2 += rect2 //在复合类型中应用鸭子类型
+  //在复合类型中应用鸭子类型
+  
+	image2 += rect2 
 	for (img<-image2){
-	img.contains("xxxx")
+		img.contains("xxxx")
 	}
 
+### 18.7 中置类型
+  //定义Person类，两个泛型参数，分别是S，T,因此
+  //它是可以用中置表达式进行变量定义的
+  
+    case class Person[S, T](val name: S, val age: T)
+
+    object InfixType extends App {
+    //下面的代码是一种中置表达方法，相当于
+    //val p:Person[String,Int]
+    val p: String Person Int = Person("摇摆少年梦", 18)
+    //中置表达式的模式匹配用法
+    //模式匹配时可以直接用常量，也可以直接用变量
+    p match {
+      case "摇摆少年梦" Person 18 => println("matching is ok")
+      case name Person age => println("name:" + name + "  age=" + age)
+    }
+    }
+
+### 18.8 存在类型 Existential Types
+  //forsome提供了常量n，以供泛型使用。那么M卽为内部类Member的子类，同一类的不同对象的内部类不相同，所以这里的m1和m2必须为同一个Network下的对象。
+    
+    def process[M <: n.Member forSome {val n : Network}](m1: M, m2: M) = (m1, m2)
+    process(qq.join("xxx"),qq.join("xxxxxxx"))
+  //下面这句就会报错，因为wx和qq不是同一个Network
+  
+    process(wx.join("xxx"),qq.join("xxxxxxx"))
 
 
 	class Test18_1 {
