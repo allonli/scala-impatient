@@ -1,9 +1,6 @@
 ### 18.1 单例类型
-	def main(args: Array[String]) {
-	  val t = new Test18_1
-	  val book = new Book
-	  book.setTitle("sdfsdf")
-	}
+
+	this.type
 
 ### 18.2 类型投影
 //qq.Member和chatter.Memer不是同一个类
