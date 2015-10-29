@@ -7,6 +7,7 @@
 
 ### 18.2 类型投影
 //qq.Member和chatter.Memer不是同一个类
+
 	val qq = new Network
 	val chatter = new Network
 
