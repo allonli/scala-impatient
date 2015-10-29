@@ -6,8 +6,8 @@
 	}
 
 ### 18.2 类型投影
-	val qq = new Network
 //qq.Member和chatter.Memer不是同一个类
+	val qq = new Network
 	val chatter = new Network
 
 	val fred = qq.join("Fred")
