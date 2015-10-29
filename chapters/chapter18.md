@@ -77,6 +77,7 @@
   
     process(wx.join("xxx"),qq.join("xxxxxxx"))
 
+  //下面为依赖代码区域
 
 	class Test18_1 {
 	  def setTitle(title: String): this.type = {
