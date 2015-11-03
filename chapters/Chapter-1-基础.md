@@ -6,9 +6,9 @@ scala 基础
 
 ### 命令行环境
 
-  1.安装scala
-  2.将scala/bin加到PATH中
-  3.执行scala命令
+		1.安装scala
+		2.将scala/bin加到PATH中
+		3.执行scala命令
 
 
 ### 声明常量
