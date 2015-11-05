@@ -1,4 +1,4 @@
-﻿# Chapter-1-基础
+## Chapter-1-基础
 
 scala 基础
 
@@ -51,6 +51,30 @@ min(3, Pi) //最小值
 scala没有静态方法，要使用类似的特性，可以使用companion object(伴生对象)。```BigInt.probablePrime(100, scala.util.Random)```这个生成随机数的方法，实际上BigInt就是一个对象。
 
 不带参数的方法，scala中通常不使用圆括号调用。如```"Hello".distinct```
+>* Scala中的方法跟Java的方法一样，方法是组成类的一部分。
+>* Scala中的函数是一个完整的对象。任何一个函数对象都继承了一个Function开头的特质（trait，可以暂时当做java中的接口）。
+```scala
+Function1[+T1] extends AnyRef
+//A function of 1 parameter.
+
+Function2[+T1, +T2] extends AnyRef
+//A function of 2 parameters.
+
+Function3[+T1, +T2, +T3] extends AnyRef
+//A function of 3 parameters.
+
+// ...一直到Function22
+```
+java中有22个函数特质（trait）。任何一个函数都将是这22个trait的具体实现。
+```scala
+//以下两种方式结果相同
+val adder = (x:Int,y:Int) => x+y
+//返回 adder: (Int, Int) => Int = <function2>
+val adder = new Function2[Int,Int,Int](){
+    def apply(x:Int,y:Int):Int = x + y
+}
+//同样返回 adder: (Int, Int) => Int = <function2>
+```
 
 ### apply方法
 ```scala
