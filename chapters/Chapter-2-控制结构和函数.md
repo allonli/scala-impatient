@@ -1,4 +1,4 @@
-﻿# Chapter-2-控制结构和函数
+## Chapter-2-控制结构和函数
 
 函数 控制结构
 
@@ -160,4 +160,15 @@ def words = scala.io.Source.fromFile("/usr/share/dict/words").mkString
 //每次调用执行都会执行
 ```
 ### 异常
-scala没有非运行时异常。IOException不需要声明说函数或方法可能抛出。
+scala没有非运行时异常。IOException不需要声明函数或方法可能抛出。throw一个异常的值为Nothing。
+```scala
+throw new IllegalArgumentException("this e exception")//它的值为Nothing
+```
+scala中也同样使用try/catch来捕获异常，语法形式是scala中的模式匹配方式。
+```scala
+try {
+    ...
+} catch {
+    case _: SomeException
+}
+```
