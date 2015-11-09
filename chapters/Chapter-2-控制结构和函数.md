@@ -169,6 +169,8 @@ scala中也同样使用try/catch来捕获异常，语法形式是scala中的模�
 try {
     ...
 } catch {
-    case _: SomeException
+    case _: SomeException吧啦吧啦 //不需要使用异常变量，直接用“_”表示即可
+} finally {
+    in.close() // 和java/c++中的含义相同，不管怎样，in都将被close
 }
 ```
