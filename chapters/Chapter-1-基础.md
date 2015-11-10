@@ -56,17 +56,15 @@ scala没有静态方法，要使用类似的特性，可以使用companion objec
 ```scala
 Function1[+T1] extends AnyRef
 //A function of 1 parameter.
-
 Function2[+T1, +T2] extends AnyRef
 //A function of 2 parameters.
-
 Function3[+T1, +T2, +T3] extends AnyRef
 //A function of 3 parameters.
-
-// ...一直到Function22
+//最多有Function22
 ```
+
 java中有22个函数特质（trait）。任何一个函数都将是这22个trait的具体实现。
-```scala
+```
 //以下两种方式结果相同
 val adder = (x:Int,y:Int) => x+y
 //返回 adder: (Int, Int) => Int = <function2>
