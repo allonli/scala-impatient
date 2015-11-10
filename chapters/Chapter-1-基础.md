@@ -64,7 +64,7 @@ Function3[+T1, +T2, +T3] extends AnyRef
 ```
 
 java中有22个函数特质（trait）。任何一个函数都将是这22个trait的具体实现。
-```
+```scala
 //以下两种方式结果相同
 val adder = (x:Int,y:Int) => x+y
 //返回 adder: (Int, Int) => Int = <function2>
