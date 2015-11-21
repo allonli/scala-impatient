@@ -194,7 +194,7 @@ val myFace = new Network
   val myFaceMember = new myFace.Member
 
   chatter.join(chatterMember)
-  chatter.join(myFaceMember) // 这里会报错，因为myFace.Member和chatter.Member是两个不同的类，members的泛型冲突了。
+  chatter.join(myFaceMember) //这里会报错，因为myFace.Member和chatter.Member是两个不同的类，members的泛型冲突了。
 ```
 如果想解决以上问题，可以在到定义处把Member换成Netwok#Member。
 ```scala
