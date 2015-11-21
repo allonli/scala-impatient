@@ -1,4 +1,4 @@
-﻿## Chapter-5-类
+## Chapter-5-类
 
 类 class
 
@@ -187,6 +187,7 @@ val chatter =  new Network
 val myFace = new Network
 ```
 > 在java中，内部类从属于外部类，scala中内部类从属于外部类对象。就像上面的代码中，myFace.Member和chatter.Member是两个不同的类。
+
 ```scala
   val chatter =  new Network
   val myFace = new Network
@@ -196,7 +197,9 @@ val myFace = new Network
   chatter.join(chatterMember)
   chatter.join(myFaceMember) //这里会报错，因为myFace.Member和chatter.Member是两个不同的类，members的泛型冲突了。
 ```
+
 如果想解决以上问题，可以在到定义处把Member换成Netwok#Member。
+
 ```scala
   private val members = new ArrayBuffer[Network#Member]
 
@@ -204,9 +207,11 @@ val myFace = new Network
     members += m
   }
 ```
+
 Network#Member的含义是，“任何Network的Member”。这种方式叫类型投影。后面也会讲到类型投影。
 ### 重命名外部类this引用
 和java一样，在内部类中，可以通过“外部类.this”的方式来访问外部类的this引用。同时，在scala中你也可以为这个引用定义一个别名。
+
 ```scala
 class Network(val name: String) {
   outer => //outer指向的是Network.this。可以用任何合法名来定义它，self在内部类中可能会引发岐义。
