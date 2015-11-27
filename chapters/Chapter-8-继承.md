@@ -181,7 +181,7 @@ account.synchronized { account.balance += amount }
 ```
 * 而AnyRef和AnyVal都是Any类的子类。isInstanceOf、asInstanceOf和一些判断相等和哈希的方法在Any类。
 
-![Scala类的继承关系](https://github.com/allonli/scala-impatient/raw/master/chapters/20151127111823.png)
+![Scala类的继承关系][1]
 
 * 如图，scala的类都是实现了ScalaObject这个空接口。
 * 同时，Null类型只有一个唯一的值null。根据图中关系，Null是不能赋值给一个AnyVal子类的变量的。比如val v:Int = null是不可以的。
@@ -190,3 +190,5 @@ account.synchronized { account.balance += amount }
 ### 对象相等判断
 AnyRef有两个判等方法，eq和equals。eq判断两引用是否指向同一个对象。默认equals会直接调用eq.当想自定义比较时，要复写equals和hashCode。
 
+
+  [1]: http://7xop3k.com1.z0.glb.clouddn.com/20151127111823.png
