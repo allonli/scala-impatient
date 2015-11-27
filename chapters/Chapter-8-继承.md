@@ -182,7 +182,7 @@ account.synchronized { account.balance += amount }
 * 而AnyRef和AnyVal都是Any类的子类。isInstanceOf、asInstanceOf和一些判断相等和哈希的方法在Any类。
 
 ![Scala类的继承关系][1]
-[[ http://7xop3k.com1.z0.glb.clouddn.com/20151127120544.jpg | height = 100px ]]
+[ http://7xop3k.com1.z0.glb.clouddn.com/20151127120544.jpg | height = 100px ]
 * 如图，scala的类都是实现了ScalaObject这个空接口。
 * 同时，Null类型只有一个唯一的值null。根据图中关系，Null是不能赋值给一个AnyVal子类的变量的。比如val v:Int = null是不可以的。
 * Nothing是没有实例的，主要应用在泛型中做为一个标记，表示任何类型。如List[Nothing]表示list中可以放任何Nothing子类型。
