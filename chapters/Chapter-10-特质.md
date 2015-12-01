@@ -266,7 +266,7 @@ object MyTest10 extends App {
 可见第一轮全部先初始化，第二轮开始调用。顺序正好相反。
 
 线性化是描述某个类型的所有父类型的规范，定义：
-如果$C$ extends $C_1$ with $C_2$ with $...$ $C_n$，则 $lin(C)$ = $C$ >> $lin(C_n)$ >> $...$ >> $lin(C_2)$ >> $lin(C_1)$   
+如果C extends C1 with C2 with ... Cn，则 lin(C) = C >> lin(Cn) >> ... >> lin(C2) >> lin(C1)
 “>>”表示串联并去掉重复项，右侧胜出。
 线性化顺序就是之前所说的super调用顺序。
 
