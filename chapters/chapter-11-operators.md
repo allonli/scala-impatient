@@ -87,12 +87,13 @@ object Fraction {
 ---
 
 ### 提取器
-顾名思义，unapply是反向apply。它接受一个对象，反解成具体的值。这个叫提取器（Extractor）
+顾名思义，unapply是反向apply。它接受一个对象，反解成具体的值。这种方式叫提取器（Extractor）。
+
 scala有三种提取器：
 
-* def unapply(object: S): Option[(T1, ..., Tn)]
-* def unapply(object: S): Option[T]
-* def unapply(object: S): Boolean
+* **def unapply(object: S): Option[(T1, ..., Tn)]**
+* **def unapply(object: S): Option[T]**
+* **def unapply(object: S): Boolean**
 
 #### 第一种提取器：def unapply(object: S): Option[(T1, ..., Tn)]
 ```scala
@@ -137,13 +138,13 @@ case class Name(first: String, last: String)
 val author = Name("Allon","Li") //apply
 
 author match {
-  case Name(first, "Li") => println("the first name : " + first) // unapply ,这行代码表示：last必须为Li的人。
+  case Name(first, "Li") => println("the first name : " + first) // Name.unapply(author) ,这行代码表示：last name 必须为"Li"的人才能匹配成功。
 }
 ```
 
 
-scala中没有一个元素的元组，如果要用unapply提取单个值，要指定它的返回值类型为Option的泛型。那就用到了第二种提取器：
-#### def unapply(object: S): Option[T]
+scala中没有一个元素的元组，如果要用unapply提取单个值，要指定它的返回值类型为Option的泛型。那就用到了，第二种提取器。如下：
+#### 第二种提取器：def unapply(object: S): Option[T]
 ```scala
 object Number {
     def unapply(input: String): Option[Int] =
@@ -157,7 +158,7 @@ object Number {
 val Number(n) = "1729"
 ```
 也可以用于测试输入，但不提取值。这时，unapply返回Boolean。这要就用到了第三种提取器：
-#### def unapply(object: S): Boolean
+#### 第三种提取器：def unapply(object: S): Boolean
 ```scala
 object IsCompound {
     def unapply(input: String) = input.contains(" ")
@@ -168,7 +169,7 @@ author match {
   case _ => println("...")
 }
 ```
-    在使用case时，对于返回Option的提取器，如果调用unapply方法成功返回Some，就算是成功。对于返回Boolean的提取器，如果调用unapply方法返回true，那就是匹配成功。
+**在使用case时，对于返回Option的提取器，如果调用unapply方法成功返回Some，就算是成功。对于返回Boolean的提取器，如果调用unapply方法返回true，那就是匹配成功。**
 
 同样可以把第一种和第三种提取器结合，就像以下代码：
 ```scala
