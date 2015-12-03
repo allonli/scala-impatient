@@ -1,4 +1,4 @@
-﻿## Chapter-3-数组相关操作
+﻿## chapter-03-working-with-arrays
 
 数组
 
@@ -47,7 +47,7 @@ b.remove(2,3)
 b.toArray
 //Array(1, 1, 2, 3)
 ```
-### 遍历数组和数组缓冲
+### 遍历Array和ArrayBuffer
 常规遍历
 ```scala
 for(i <- 0 until (b.length, 2)) println(b(i))
@@ -56,7 +56,7 @@ for(i <- 0 until (b.length, 2)) println(b(i))
 1
 2
 ```
-如果不使用下标，可以更简单的遍历，有点像java中的增强for。
+如果不使用下标，可以更简单的遍历，有点像java中的增强for循环。
 ```scala
 for(elem <- b){
     println(elem)
@@ -106,7 +106,7 @@ b.mkString(",")
 b.mkString("<",",",">")
 //返回 String = <1,2,7,9>
 ```
-ArrayBuffer（不是Array）的toString方法会打印出如下效果，不会像java一样。
+ArrayBuffer（不是Array）的toString方法默认不会像java一样打些没用的东西，而是带有类似mkString的输出，打印出如下效果。
 ```scala
 val c = ArrayBuffer(1, 7, 2, 9)
 c.toString
