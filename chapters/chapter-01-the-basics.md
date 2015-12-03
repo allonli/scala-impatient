@@ -1,15 +1,19 @@
-## Chapter-1-基础
+﻿## chapter-01-the-basics
 
 scala 基础
 
 ---
 
 ### 命令行环境
-
+在学习scala时可以用两种方式结合学习，一种是命令行模式，这适合执行一些简单的代码。以便快速得到结果。另一种是使用IDE开发，IDE这里使用的是IntelliJ IDEA。以下介绍了简单的几个步骤。
+#### EPFL命令行
 	1.安装scala
 	2.将scala/bin加到PATH中
 	3.执行scala命令
-
+#### IntelliJ IDEA
+    1.安装IEEA
+    2.安装scala插件
+    3.创建scala工程
 
 ### 声明常量
 ```scala
@@ -26,15 +30,15 @@ var anserwer = 8 * 5 + 2
 ```
 
 ### 常用类型
-scala中和java一样也有七种类型：Byte、Char、Short、Int、Long、Float、Double、Boolean。scala中不存在基本类型的概念，都视为引用类型。
-下面的"Hello"和1分别被“偷偷”转换（隐式转换，如果想了解可以移步隐式转换那一章，但是我还是建议你按顺序看。只当它是“偷偷”转换的即可）成了StringOps和RichInt
+scala中也存在七种类型用来对应java的基本类型：Byte、Char、Short、Int、Long、Float、Double、Boolean。scala中不存在基本类型的概念，都视为引用类型。
+下面的"Hello"和1分别被“偷偷”转换（隐式转换，如果想了解可以移步隐式转换那一章）成了StringOps和RichInt
 ```scala
 "Hello".intersect("World") //输出"lo" String被转换成了StringOps
 1.to(10) //Int被转换成RichInt
 ```
 
 ### 算术和操作符
-scala中的操作符实际上是方法。1 + 1 实际上等价于1.+(1),加号就是方法名。（java/c++程序员是不是感觉有点惊愕）。并且这些方法同样可以重载，这样一来，你就可以定义属于自己的符号（方法名）定义了。
+scala中的操作符实际上是方法。1 + 1 实际上等价于1.+(1),加号就是方法名。（java/c++程序员会感觉有些不一样）。并且这些方法同样可以重载，这样一来，你就可以定义属于自己的符号（方法名）定义了。
 
 ### 调用函数和方法
 方法被引用来调用，而scala也支持函数，这些函数不需要从某个类来调用。直接使用便是。
@@ -48,11 +52,15 @@ min(3, Pi) //最小值
 使用以scala开头的包时，可以省略scala前缀。如：import math._
 */
 ```
-scala没有静态方法，要使用类似的特性，可以使用companion object(伴生对象)。```BigInt.probablePrime(100, scala.util.Random)```这个生成随机数的方法，实际上BigInt就是一个对象。
+scala没有静态方法，要使用类似的特性，可以使用companion object(伴生对象)。```BigInt.probablePrime(100, scala.util.Random)```这个生成随机数的方法，实际上BigInt是一个对象。
 
 不带参数的方法，scala中通常不使用圆括号调用。如```"Hello".distinct```
+
+scala中函数和方法的区别：
 >* Scala中的方法跟Java的方法一样，方法是组成类的一部分。
->* Scala中的函数是一个完整的对象。任何一个函数对象都继承了一个Function开头的特质（trait，可以暂时当做java中的接口）。
+>* Scala中的函数是一个完整的对象。
+
+任何一个函数对象都是一个继承了Function开头的特质（trait，可以暂时当做java中的接口）。
 ```scala
 Function1[+T1] extends AnyRef
 //A function of 1 parameter.

@@ -1,12 +1,12 @@
-## Chapter-2-控制结构和函数
+﻿## chapter-02-control-structures-and-functions
 
-函数 控制结构
+函数 控制结构 异常
 
 ---
 
 ### 条件表达式
 
-scala里的if/else是有值的，返回的值就是那个表达式的值。如果if语句的条件为false没有进入语句块，那么该if表达式的值为Unit(含义接近void，和void的区别是：void是空的钱包，Unit是钱包里一张写有“没钱”的纸币)，写做()。
+scala里的if/else是有值的，返回的值就是那个表达式的值。如果if语句的条件为false没有进入语句块，那么该if表达式的值为Unit(含义接近void，和void的区别是：void是空的钱包，Unit是钱包里一张写着“没钱”的纸币)，写做()。
 
 scala中没有switch语句，代之以强大的模式匹配来解决问题。
 
@@ -33,7 +33,7 @@ println(42)
 ```scala
 printf("Hello, %s! you are %d years old.\n"," Fred", 42)
 ```
-readLine函数可以从控制台读取一行输入。读取Int可以用readInt其他类型也一样，以此类推。
+readLine函数可以从控制台读取一行输入。读取Int可以用readInt其他类型以此类推。
 ```scala
 val name = readLine("请输入您的名字并回车：")
 println("您的名称是："  + name)
@@ -51,8 +51,20 @@ for (i <- 1 to 10) println(i) //可以省略1 to 10外面的括号
 
 在使用for循环的时候，也可以使用从0到n-1的区间，这时可以用until而不是to。如
 ```scala
-for (i <- 1 until 10) println(i) //会自1输出到9
+for (i <- 1 until 10) println(i) //会自1输出至9
 ```
+
+跳跃式循环
+```scala
+for(i <- 0 until (10,2)) println(i)
+//输出
+0
+2
+4
+6
+8
+```
+ 
 scala并没有提供break，continue。如果想使用类似功能可以：
 
     1. 使用Boolean和return
@@ -66,22 +78,22 @@ for (...) {
 
 ### 高级for循环和for推导式
 
-在java中实现双层嵌套for循环代码看起来恶心的想吐。在scala里，你只需要这样：
+在java中实现双层嵌套for循环代码的可读性不如scala。在scala里，你只需要这样：
 ```scala
 for (i <- i to 3; j <- 5 to 6) print((10 * i + j) + " ")
 //将输出 15 16 25 26 35 36
 ```
-可以在上面的基础上加一个if判断条件
+从左到右就是双层for的从外到内。另外还可以在上面的基础上为每层循环加if条件判断：
 ```scala
-for (i <- 1 to 3; j <- 5 to 6 if j > 5) print((10 * i + j) + " ")
-//将输出 16 26 36
+for (i <- 1 to 3 if i < 3; j <- 5 to 6 if j > 5) print((10 * i + j) + " ")
+//输出 16 26
 ```
-可以定义任意多的临时变量
+可以定义不限个数的临时变量：
 ```scala
 for (i <- 1 to 3; from = 6;j <- from to 6) print((10 * i + j) + " ")
 //将输出 16 26 36
 ```
-可以将for循环过程中的任意值收集到一个集合中（怎一个爽字了得）,这类循环叫for推导式。
+可以将for循环过程中的任意值收集到一个集合中，这类循环叫for推导式。
 ```scala
 for (i <- 1 to 10) yield i % 3
 //将返回 Vector(1, 2, 0, 1, 2, 0, 1, 2, 0, 1)
@@ -130,7 +142,7 @@ val str = MessageFormat.format("The answer to {0} is [1]", "everything", 42.asIn
     42.asInstanceOf[AnyRef])
 
 ### 过程
-如果函数体为花括号，但是没有=号的函数，返回类型为Unit。也叫过程(procedure)
+如果函数体为花括号，但是没有“=”的函数，返回类型为Unit。也叫过程(procedure)
 ```scala
 def box(s: String) {//没有=号
 ...
@@ -160,7 +172,7 @@ def words = scala.io.Source.fromFile("/usr/share/dict/words").mkString
 //每次调用执行都会执行
 ```
 ### 异常
-scala没有非运行时异常。IOException不需要声明函数或方法可能抛出。throw一个异常的值为Nothing。
+scala没有非运行时异常。IOException不需要声明和强制catch。throw一个异常的值为Nothing。
 ```scala
 throw new IllegalArgumentException("this e exception")//它的值为Nothing
 ```
@@ -169,7 +181,7 @@ scala中也同样使用try/catch来捕获异常，语法形式是scala中的模�
 try {
     ...
 } catch {
-    case _: SomeException吧啦吧啦 //不需要使用异常变量，直接用“_”表示即可
+    case _: SomeException... //不需要使用异常变量，直接用“_”表示即可
 } finally {
     in.close() // 和java/c++中的含义相同，不管怎样，in都将被close
 }
