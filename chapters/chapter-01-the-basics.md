@@ -95,3 +95,86 @@ http://www.scala-lang.org/api
 2. 数值类型，多看看RichInt、RichDouble等。字符串看StringOps。
 3. 数学函数位于scala.math包中，不在某个类里。
 4. 如果看到unary_-不要感到奇怪，这是前置的负操作符-x的方式。在操作符那章，你会豁然开朗。
+
+
+## 习题
+1. 在Scala REPL中键入“3.” 然后按Tab。有哪些方法可以被应用？
+    
+        %   *   -   >    >>    ^  ...
+2. 在Scala REPL计算3的平方根，再求值平方。现在，这个结果与3相关多少？（提示：res变量是你的朋友。）
+```scala
+import math._
+sqrt(3)
+// res85: Double = 1.7320508075688772
+
+res85*res85
+// res86: Double = 2.9999999999999996
+
+3 - res86
+// res87: Double = 4.440892098500626E-16
+```
+3. res变量是val还是var?
+```scala
+res89 = 3
+//<console>:8: error: reassignment to val
+//res9 = 3
+//   ^
+```
+4. Scala允许你用数字去乘字符串---去REPL中试一下"crazy"*3。这个操作做什么？在Scaladoc中如何找到这个操作?
+```scala
+"crazy" * 3
+// res90: String = crazycrazycrazy
+```
+    *是它的方法"crazy".*(3)。直接到StringOps类看*方法即可。
+5. 10 max 2的含义是什么？max方法在哪个类中？
+    
+    此方法返回两个数字中较大的那个。在RichInt中。
+
+6. 用BigInt计算2的1024次方。
+```scala
+BigInt(2).pow(1024)
+```
+
+7. 为了在使用probablePrime(100,Random)获取随机素数时不在probablePrime和Random之前使用任何限定符，你需要引入什么？
+
+    要引入对应的包，Random在util下。而probablePrime在对象BigInt里。
+```scala
+import util.Random
+import import math.BigInt.probablePrime
+probablePrime(3,Random)
+//res1: scala.math.BigInt = 5
+```
+
+8. 创建随机文件的方式之一是生成一个随机的BigInt，然后将它转换成三十六进制，输出类似"qsnvbevtomcj38o06kul"这样的字符串。查阅Scaladoc，找到在Scala中实现该逻辑的办法。
+
+    在BigInt里找到toString方法
+```scala
+probablePrime(100,Random)
+//res2: scala.math.BigInt = 680624836022523911868209171401
+
+res2.toString(36)
+//res3: String = 1tzk0mgequl6l6t2c24p
+```
+
+9. 在Scala中如何获取字符串的首字符和尾字符？
+
+    到StringOps中查找
+```scala
+scala> res3.head
+//res4: Char = 1
+scala> res3.last
+//res6: Char = p
+
+//另外两种方式：
+
+res3(0)
+res3.take(1)
+//获取首字符
+res3.reverse(0)
+res3.takeRight(1)
+//获取尾字符
+```
+
+10. take,drop,takeRight和dropRight这些字符串函数是做什么用的？和substring相比，他们的优点和缺点都是哪些？
+
+        查询API即可take是从字符串首开始获取字符串,drop是从字符串首开始去除字符串。takeRight和dropRight是从字符串尾开始操作。这四个方法都是单方向的。如果我想要字符串中间的子字符串，那么需要同时调用drop和dropRight，或者使用substring

@@ -50,6 +50,7 @@ for (i <- 1 to 10) println(i) //可以省略1 to 10外面的括号
     表达式一般可以为一个集合
 
 在使用for循环的时候，也可以使用从0到n-1的区间，这时可以用until而不是to。如
+
 ```scala
 for (i <- 1 until 10) println(i) //会自1输出至9
 ```
@@ -185,4 +186,80 @@ try {
 } finally {
     in.close() // 和java/c++中的含义相同，不管怎样，in都将被close
 }
+```
+
+---
+
+## 习题
+1. 一个数字如果为正数，则它的signum为1;如果是负数,则signum为-1;如果为0,则signum为0.编写一个函数来计算这个值。
+
+```scala
+def signum(num: Int):Int = {
+   if(num > 0) 1 else if(num == 0) 0 else -1
+}
+```
+
+2. 一个{}的值是什么？类型是什么？
+```scala
+val t = {}
+// t: Unit = ()
+```
+   可以看出，它的值是()类型是Unit     
+    
+3. 指出在Scala中何种情况下赋值语句x=y=1是合法的。(提示：给x找个合适的类型定义)
+    
+    所以只要x为Unit类型就可以了。
+
+4. 针对下列Java循环编写一个Scala版本:for(int i=10;i>=0;i--)System.out.println(i);
+```scala
+for(i <- 0 to 10 reverse) println(i)
+```
+
+5. 编写一个过程countdown(n:Int)，打印从n到0的数字。
+```scala
+def countdown(n:Int){
+    0 to n reverse foreach print
+}
+```
+
+6. 编写一个for循环,计算字符串中所有字母的Unicode代码的乘积。举例来说，"Hello"中所有字符串的乘积为9415087488L。
+```scala
+var t:Long = 1
+for(i <- "Hello") t = t * i.toLong
+t
+//res57: Long = 9415087488
+```
+
+7. 同样是解决前一个练习的问题，但这次不使用循环。（提示：在Scaladoc中查看StringOps）
+```scala
+"Hello".foldLeft(1L)((a, b) => a * b)
+```
+
+8. 编写一个函数product(s:String)，计算前面练习中提到的乘积。
+```scala
+def product(s:String):BigInt = {
+    s.foldLeft(1L)((a, b) => a * b)
+}
+```
+
+9. 把前一个练习中的函数改成递归函数。
+```scala
+def productRec(s: String):Long = {
+	if(s.length == 0) 1
+	else s(0) * productRec(s drop 1)
+}                                         
+```
+
+10. 编写函数计算x^n^,其中n是整数，使用如下的递归定义：
+x^n^=y^2^,如果n是正偶数的话，这里的y=x^(n/2)^
+x^n^ = x*x^(n-1)^,如果n是正奇数的话
+x^0^ = 1
+x^n^ = 1/x^(-n)^,如果n是负数的话
+```scala
+def xpown(x: BigInt, n: Int): BigInt = {
+	if(n > 0 && n % 2 == 0) xpown(x, n / 2) * xpown(x, n / 2)
+	else if(n > 0) x * xpown(x, n - 1)
+	else if(n == 0) 1
+	else 1 / xpown(x, -n)
+} 
 ```
