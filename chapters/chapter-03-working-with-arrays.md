@@ -123,3 +123,78 @@ b(2)(1) = 1.111//下标为横2纵1（第3个数组中的第2个值）。
 
 ### 和java相互转换
 scala数组可以和java数组之间来回转换。请关注隐式转换那一章。
+
+## 习题
+* 编写一段代码，将a设置为一个n个随机整数的数组，要求随机数介于0（包含）和n(不包含)之间。
+```scala
+def randomArray(n: Int): Array[Int] = {
+    val vector = for (i <- 0 until n) yield scala.util.Random.nextInt(n)
+    vector.toArray
+}
+```
+
+* 编写一个循环，将整数数组中的相信元素对换，
+```scala
+def switchNear(arr: Array[Int]): Array[Int] = {
+  val t = arr.toBuffer
+  for (i <- 1 until(t.length, 2); tmp = t(i)) {
+    t(i) = t(i - 1)
+    t(i - 1) = tmp
+  }
+  t.toArray
+}
+```
+* 重复前一个练习，不过这一次生成一个新的值交换过的数组。用for/yield。
+```scala
+def switchNear(arr: Array[Int]): Array[Int] = {
+  val vector =
+    for (i <- 0 until arr.length; tmp = arr(i)) yield if (i % 2 == 0) arr(i + 1) else arr(i - 1)
+  vector.toArray
+}
+```
+
+* 给定一个整数数组，产生一个新的数组，包含元数组中的所有正值，以原有顺序排列，之后的元素是所有零或负值，以原有顺序排列。
+```scala
+def branchArray(arr: Array[Int]): Array[Int] = {
+  val pre = ArrayBuffer[Int]()
+  val last = ArrayBuffer[Int]()
+  arr foreach (item => if (item >= 0) pre += item else last += item)
+  pre ++= last.toArray
+  pre.toArray
+}
+//另一个方法
+def branchArray2(arr: Array[Int]): Array[Int] = {
+  val all = ArrayBuffer[Int]()
+  all ++= arr.filter(_ >= 0)
+  all ++= arr.filter(_ < 0)
+  all.toArray
+}
+```
+
+* 如何计算Aarray[Double]的平均值？
+```scala
+def avgArr(arr: Array[Double]): Double = {
+  arr.sum / arr.length
+}
+```
+
+* 如何将Array[Int]反序排列？对于ArrayBuffer[Int]你又会怎么做？
+```scala
+arr reverse
+arr.toBuffer reverse
+```
+
+* 写一段代码，打印数组中的所有的值，并去掉重复项。（提示：查看Scaladoc）
+```scala
+//arr: Array[Int] = Array(-2, -1, 0, 1, 2, 1, 2, 3, 4, -1)
+arr distinct
+//res116: Array[Int] = Array(-2, -1, 0, 1, 2, 3, 4)
+```
+
+* 收集一个数组的负值下标到一个数组，反序这个数组，再去掉它最后一个元素。然后对每个下标调用remove(i)。比较和之前做法的效率。
+```scala
+for(i <- 0 until arr.length if arr(i)<0) yield i
+c.reverse.trimStart(1)
+val d = arr.toBuffer
+c.foreach(d.remove)
+```
