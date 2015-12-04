@@ -1,4 +1,4 @@
-﻿## chapter-01-the-basics
+## chapter-01-the-basics
 
 scala 基础
 
@@ -98,10 +98,11 @@ http://www.scala-lang.org/api
 
 
 ## 习题
-1. 在Scala REPL中键入“3.” 然后按Tab。有哪些方法可以被应用？
+
+* 在Scala REPL中键入“3.” 然后按Tab。有哪些方法可以被应用？
     
         %   *   -   >    >>    ^  ...
-2. 在Scala REPL计算3的平方根，再求值平方。现在，这个结果与3相关多少？（提示：res变量是你的朋友。）
+* 在Scala REPL计算3的平方根，再求值平方。现在，这个结果与3相关多少？（提示：res变量是你的朋友。）
 ```scala
 import math._
 sqrt(3)
@@ -113,19 +114,21 @@ res85*res85
 3 - res86
 // res87: Double = 4.440892098500626E-16
 ```
-3. res变量是val还是var?
+
+* res变量是val还是var?
+
 ```scala
 res89 = 3
 //<console>:8: error: reassignment to val
 //res9 = 3
 //   ^
 ```
-4. Scala允许你用数字去乘字符串---去REPL中试一下"crazy"*3。这个操作做什么？在Scaladoc中如何找到这个操作?
+* Scala允许你用数字去乘字符串---去REPL中试一下"crazy"*3。这个操作做什么？在Scaladoc中如何找到这个操作?
 ```scala
 "crazy" * 3
 // res90: String = crazycrazycrazy
 ```
-    *是它的方法"crazy".*(3)。直接到StringOps类看*方法即可。
+*    *是它的方法"crazy".*(3)。直接到StringOps类看*方法即可。
 5. 10 max 2的含义是什么？max方法在哪个类中？
     
     此方法返回两个数字中较大的那个。在RichInt中。
@@ -135,7 +138,7 @@ res89 = 3
 BigInt(2).pow(1024)
 ```
 
-7. 为了在使用probablePrime(100,Random)获取随机素数时不在probablePrime和Random之前使用任何限定符，你需要引入什么？
+* 为了在使用probablePrime(100,Random)获取随机素数时不在probablePrime和Random之前使用任何限定符，你需要引入什么？
 
     要引入对应的包，Random在util下。而probablePrime在对象BigInt里。
 ```scala
@@ -145,7 +148,7 @@ probablePrime(3,Random)
 //res1: scala.math.BigInt = 5
 ```
 
-8. 创建随机文件的方式之一是生成一个随机的BigInt，然后将它转换成三十六进制，输出类似"qsnvbevtomcj38o06kul"这样的字符串。查阅Scaladoc，找到在Scala中实现该逻辑的办法。
+* 创建随机文件的方式之一是生成一个随机的BigInt，然后将它转换成三十六进制，输出类似"qsnvbevtomcj38o06kul"这样的字符串。查阅Scaladoc，找到在Scala中实现该逻辑的办法。
 
     在BigInt里找到toString方法
 ```scala
@@ -156,7 +159,7 @@ res2.toString(36)
 //res3: String = 1tzk0mgequl6l6t2c24p
 ```
 
-9. 在Scala中如何获取字符串的首字符和尾字符？
+* 在Scala中如何获取字符串的首字符和尾字符？
 
     到StringOps中查找
 ```scala
@@ -175,6 +178,6 @@ res3.takeRight(1)
 //获取尾字符
 ```
 
-10. take,drop,takeRight和dropRight这些字符串函数是做什么用的？和substring相比，他们的优点和缺点都是哪些？
+* take,drop,takeRight和dropRight这些字符串函数是做什么用的？和substring相比，他们的优点和缺点都是哪些？
 
         查询API即可take是从字符串首开始获取字符串,drop是从字符串首开始去除字符串。takeRight和dropRight是从字符串尾开始操作。这四个方法都是单方向的。如果我想要字符串中间的子字符串，那么需要同时调用drop和dropRight，或者使用substring
