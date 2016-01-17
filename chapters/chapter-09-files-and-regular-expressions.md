@@ -84,7 +84,7 @@ val savedFred = in.readObject().asInstanceOf[Person]
 ```
     scala的集合类默认都是可序列化的。可以放心使用它们做要序列化对象的成员变量。
 
-### 进程控制
+### 进程控制-执行shell
 scala中执行shell非常简单
 ```scala
 import sys.process._
