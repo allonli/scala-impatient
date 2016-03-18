@@ -11,7 +11,7 @@ scala 基础
 	2.将scala/bin加到PATH中
 	3.执行scala命令
 #### IntelliJ IDEA
-    1.安装IEEA
+    1.安装IDEA
     2.安装scala插件
     3.创建scala工程
 
